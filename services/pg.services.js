@@ -5,11 +5,13 @@ const Knex = require('knex');
 const knex = Knex({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
-    user: 'postgres',
-    password: 'password',
-    database: 'crowndb',
+    host: process.env.HOST,
+    user: process.env.USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    port: process.env.PORT,
   },
+  pool: { min: 1, max: 1 },
   ...knexSnakeCaseMappers(),
 });
 
